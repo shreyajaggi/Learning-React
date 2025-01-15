@@ -1,0 +1,19 @@
+{
+  "name": "learning-react",
+  "version": "1.0.0",
+  "description": "i am learning react",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shreyajaggi/Learning-React.git"
+  },
+  "author": "shreya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shreyajaggi/Learning-React/issues"
+  },
+  "homepage": "https://github.com/shreyajaggi/Learning-React#readme"
+}
