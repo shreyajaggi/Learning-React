@@ -2,8 +2,9 @@
   "name": "learning-react",
   "version": "1.0.0",
   "description": "i am learning react",
-  "main": "App.js",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -15,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/shreyajaggi/Learning-React/issues"
   },
-  "homepage": "https://github.com/shreyajaggi/Learning-React#readme"
+  "homepage": "https://github.com/shreyajaggi/Learning-React#readme",
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
 }
