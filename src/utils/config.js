@@ -1,4 +1,4 @@
-export const restraunts = [
+export const restaurants = [
   {
     id: 1,
     img: "https://www.livelaw.in/h-upload/2024/08/19/556384-burger-king.webp",
@@ -35,6 +35,3 @@ export const restraunts = [
     rating: "4.8",
   },
 ];
-
-export const IMG_LOGO_URL =
-  "https://img.freepik.com/premium-vector/logo-food-company-that-says-sun-sun-sunflower_917213-253424.jpg?semt=ais_hybrid";

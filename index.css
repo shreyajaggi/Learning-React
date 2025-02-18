@@ -23,6 +23,16 @@
   border: 1px solid black;
   padding: 10px;
   margin: 10px;
+  border-radius: 10px;
+}
+
+.shimmer-card {
+  width: 200px;
+  background-color: #cecccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  height: 300px;
 }
 
 .card > img {
@@ -30,7 +40,24 @@
   height: 150px;
 }
 
-.restraunt-list {
+.restaurant-list {
   display: flex;
   flex-wrap: wrap;
+}
+
+.search-box {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  border: 1px solid var(--orange);
+  border-radius: var(--border-radius);
+}
+
+.shimmer-search-box {
+  width: 50%;
+  height: 50px;
+  background-color: #cecccc;
+  border-radius: var(--border-radius);
+  margin-bottom: 30px;
 }

@@ -1,4 +1,4 @@
-import { IMG_LOGO_URL } from "../config";
+import { IMG_LOGO_URL } from "../utils/constants";
 const Title = () => {
   return (
     <a href="/">

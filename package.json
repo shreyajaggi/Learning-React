@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "i am learning react",
   "scripts": {
-    "start": "parcel index.html",
+    "start": "parcel --no-cache index.html",
     "build": "parcel build index.html",
     "test": "jest"
   },

@@ -1,41 +1,85 @@
-import { useState } from "react";
-import { restraunts } from "../config";
+import { useEffect, useState } from "react";
+//import { restaurants } from "../utils/config";
+import Shimmer from "./Shimmer";
 import Card from "./Card";
 
-function filterData(restrauntList, searchText) {
-  return restrauntList?.filter((res) => res.name.includes(searchText));
+function filterData(restaurantList, searchText) {
+  return restaurantList?.filter((res) =>
+    res?.info?.name?.toLowerCase().includes(searchText.toLowerCase())
+  );
 }
+
 const Body = () => {
-  const [restrauntList, setRestrauntList] = useState(restraunts);
+  const [allRestaurantList, setAllRestaurantList] = useState([]);
+  const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+    //API Call
+    getRestaurants();
+  }, []);
+
+  async function getRestaurants() {
+    const resData = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9097506&lng=77.6486011&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await resData.json();
+    //console.log(json.data.cards[1].card.card.gridElements?.infoWithStyle);
+    const resList =
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+    setAllRestaurantList(resList);
+    setFilteredRestaurantList(resList);
+  }
+
+  if (!allRestaurantList) return null; //Early Return
 
   return (
     <>
-      <div className="search-container">
+      <div className="search-box">
         <input
           type="text"
           className="search-input"
-          placeholder="search"
+          placeholder=""
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
+            if (!searchText) {
+              setFilteredRestaurantList(allRestaurantList);
+            }
           }}
         />
         <button
           className="search-btn"
           onClick={() => {
-            const data = filterData(restrauntList, searchText);
-            setRestrauntList(data);
+            const data = filterData(allRestaurantList, searchText);
+            setFilteredRestaurantList(data);
           }}
         >
           Search
         </button>
       </div>
-      <div className="restraunt-list">
-        {restrauntList?.map((restraunt) => {
-          return <Card key={restraunt.id} restraunt={restraunt} />;
-        })}
-      </div>
+      {allRestaurantList?.length === 0 ? (
+        <Shimmer />
+      ) : (
+        <div className="restaurant-list">
+          {filteredRestaurantList.length === 0 ? (
+            <h1>No Restaurant Found</h1>
+          ) : searchText ? (
+            filteredRestaurantList?.map((restaurant) => {
+              return (
+                <Card key={restaurant?.info?.id} restaurant={restaurant.info} />
+              );
+            })
+          ) : (
+            allRestaurantList?.map((restaurant) => {
+              return (
+                <Card key={restaurant?.info?.id} restaurant={restaurant.info} />
+              );
+            })
+          )}
+        </div>
+      )}
     </>
   );
 };
