@@ -1,4 +1,5 @@
 import { IMG_LOGO_URL } from "../utils/constants";
+import { Link } from "react-router";
 const Title = () => {
   return (
     <a href="/">
@@ -7,15 +8,23 @@ const Title = () => {
   );
 };
 
+//SPA - Single Page Application
+
 const Header = () => {
   return (
     <div className="header">
       <Title />
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+          <li>
+            <Link to="/">Home </Link>
+          </li>
+          <li>
+            <Link to="/about">About </Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact </Link>
+          </li>
           <li>Cart</li>
         </ul>
       </div>

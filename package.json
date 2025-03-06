@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "i am learning react",
   "scripts": {
-    "start": "parcel --no-cache index.html",
+    "start": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest"
   },
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.2.0"
   }
 }

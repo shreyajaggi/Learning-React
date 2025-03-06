@@ -24,6 +24,11 @@
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
+  text-decoration: none;
+}
+
+.a {
+  text-decoration: none;
 }
 
 .shimmer-card {
