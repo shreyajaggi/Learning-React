@@ -2,26 +2,14 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { IMG_CDN_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import useRestaurant from "../utils/useRestaurant";
 
 const RestaurantDetails = () => {
-  //how to read a dynamic url
-  const params = useParams();
-  const { resId } = params;
-  const [restaurant, setRestaurant] = useState({});
-  useEffect(() => {
-    getRestaurantInfo();
-  }, []);
+  //how to read a dynamic URL params
+  //always create hooks with use in front of the name
+  const { resId } = useParams();
+  const restaurant = useRestaurant(resId);
 
-  async function getRestaurantInfo() {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9097506&lng=77.6486011&restaurantId=" +
-        resId +
-        "&catalog_qa=undefined&submitAction=ENTER"
-    );
-    const jsonData = await data.json();
-    setRestaurant(jsonData.data.cards[2].card.card.info);
-    console.log(jsonData.data);
-  }
   return (
     <>
       {Object.values(restaurant).length == 0 ? (

@@ -5,6 +5,10 @@
   border: 1px solid black;
 }
 
+.footer {
+  background-color: grey;
+}
+
 .logo {
   width: 80px;
 }
