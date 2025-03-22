@@ -12,6 +12,10 @@ import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
 
 const RestaurantDetails = lazy(() => import("./components/RestaurantDetails")); //Lazy Loading Example
+//Chunking
+//Code Splitting
+//On Demand Loading
+//Dynamic Import
 
 const AppLayout = () => {
   return (
