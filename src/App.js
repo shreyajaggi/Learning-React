@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -7,8 +7,11 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
-import RestaurantDetails from "./components/RestaurantDetails";
+//import RestaurantDetails from "./components/RestaurantDetails";
 import Profile from "./components/Profile";
+import Shimmer from "./components/Shimmer";
+
+const RestaurantDetails = lazy(() => import("./components/RestaurantDetails")); //Lazy Loading Example
 
 const AppLayout = () => {
   return (
@@ -38,7 +41,14 @@ const appRouter = createBrowserRouter([
         ],
       },
       { path: "/contact", element: <Contact /> },
-      { path: "/restaurants/:resId", element: <RestaurantDetails /> },
+      {
+        path: "/restaurants/:resId",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <RestaurantDetails />{" "}
+          </Suspense>
+        ),
+      },
     ],
   },
 ]);
