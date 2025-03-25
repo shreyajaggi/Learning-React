@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { IMG_LOGO_URL } from "../utils/constants";
 import { Link } from "react-router";
 const Title = () => {
   return (
     <a href="/">
-      <img className="logo" alt="logo" src={IMG_LOGO_URL} />
+      <img className="h-28 p-2" alt="logo" src={IMG_LOGO_URL} />
     </a>
   );
 };
@@ -11,23 +12,43 @@ const Title = () => {
 //SPA - Single Page Application
 
 const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-50 shadow-lg">
       <Title />
-      <div className="nav-items">
-        <ul>
-          <li>
+      <div>
+        <ul className="flex py-10">
+          <li className="px-2">
             <Link to="/">Home </Link>
           </li>
-          <li>
+          <li className="px-2">
             <Link to="/about">About </Link>
           </li>
-          <li>
+          <li className="px-2">
             <Link to="/contact">Contact </Link>
           </li>
-          <li>Cart</li>
+          <li className="px-2">Cart</li>
         </ul>
       </div>
+      {isLoggedIn ? (
+        <button
+          className="p-10"
+          onClick={() => {
+            setIsLoggedIn(false);
+          }}
+        >
+          LogOut
+        </button>
+      ) : (
+        <button
+          className="p-10"
+          onClick={() => {
+            setIsLoggedIn(true);
+          }}
+        >
+          Log In
+        </button>
+      )}
     </div>
   );
 };
