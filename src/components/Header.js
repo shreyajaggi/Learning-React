@@ -28,6 +28,9 @@ const Header = () => {
             <Link to="/contact">Contact </Link>
           </li>
           <li className="px-2">Cart</li>
+          <Link to="/instamart">
+            <li className="px-2">Instamart</li>
+          </Link>
         </ul>
       </div>
       {isLoggedIn ? (

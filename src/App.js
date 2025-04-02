@@ -10,6 +10,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 //import RestaurantDetails from "./components/RestaurantDetails";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
+import Instamart from "./components/Instamart";
 
 const RestaurantDetails = lazy(() => import("./components/RestaurantDetails")); //Lazy Loading Example
 //Chunking
@@ -45,11 +46,12 @@ const appRouter = createBrowserRouter([
         ],
       },
       { path: "/contact", element: <Contact /> },
+      { path: "/instamart", element: <Instamart /> },
       {
         path: "/restaurants/:resId",
         element: (
           <Suspense fallback={<Shimmer />}>
-            <RestaurantDetails />{" "}
+            <RestaurantDetails />
           </Suspense>
         ),
       },
