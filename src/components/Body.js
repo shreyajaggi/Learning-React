@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import Card from "./Card";
 import { Link } from "react-router";
 import { filterData } from "../utils/helper";
 import useAllRestaurant from "../utils/useAllRestaurant";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const allRestaurantList = useAllRestaurant();
@@ -12,6 +13,7 @@ const Body = () => {
     allRestaurantList,
   ]);
   const [searchText, setSearchText] = useState("");
+  const { user, setUser } = useContext(UserContext);
   const isOnline = useOnline();
   if (!isOnline) {
     return <h1>Please check your Internet connection!</h1>;
@@ -43,6 +45,12 @@ const Body = () => {
         >
           Search
         </button>
+        <input
+          value={user.name}
+          onChange={(e) => {
+            setUser({ name: e.target.value, email: "newEmail" });
+          }}
+        ></input>
       </div>
       {allRestaurantList?.length === 0 ? (
         <Shimmer />

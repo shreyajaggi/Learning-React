@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -11,6 +11,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
 import Instamart from "./components/Instamart";
+import UserContext from "./utils/UserContext";
 
 const RestaurantDetails = lazy(() => import("./components/RestaurantDetails")); //Lazy Loading Example
 //Chunking
@@ -19,11 +20,17 @@ const RestaurantDetails = lazy(() => import("./components/RestaurantDetails")); 
 //Dynamic Import
 
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "Shreya Jaggi",
+    email: "support@mail.com",
+  });
   return (
     <>
-      <Header />
-      <Outlet />
-      <Footer />
+      <UserContext.Provider value={{ user: user, setUser: setUser }}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </UserContext.Provider>
     </>
   );
 };
