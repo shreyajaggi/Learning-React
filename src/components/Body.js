@@ -3,9 +3,9 @@ import Shimmer from "./Shimmer";
 import Card from "./Card";
 import { Link } from "react-router";
 import { filterData } from "../utils/helper";
-import useAllRestaurant from "../utils/useAllRestaurant";
-import useOnline from "../utils/useOnline";
-import UserContext from "../utils/UserContext";
+import useAllRestaurant from "../customHooks/useAllRestaurant";
+import useOnline from "../customHooks/useOnline";
+import UserContext from "../Context/UserContext";
 
 const Body = () => {
   const allRestaurantList = useAllRestaurant();
